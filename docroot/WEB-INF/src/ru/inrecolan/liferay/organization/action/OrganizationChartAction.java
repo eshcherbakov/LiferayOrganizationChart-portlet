@@ -44,22 +44,22 @@ public class OrganizationChartAction extends MVCPortlet {
 	public void doView(RenderRequest renderRequest,
 			RenderResponse renderResponse) throws IOException, PortletException {
 		
-		// Получаем идентификатор организации
+		// РџРѕР»СѓС‡Р°РµРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕСЂРіР°РЅРёР·Р°С†РёРё
 		ThemeDisplay themeDisplay = 
 			     (ThemeDisplay)renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
 		companyId = themeDisplay.getCompanyId();
 		
-		// Получаем главного менеджера
+		// РџРѕР»СѓС‡Р°РµРј РіР»Р°РІРЅРѕРіРѕ РјРµРЅРµРґР¶РµСЂР°
 		Manager manager = getMainManager();
 		
-		// Передаём список менеджеров на страницу
+		// РџРµСЂРµРґР°С‘Рј СЃРїРёСЃРѕРє РјРµРЅРµРґР¶РµСЂРѕРІ РЅР° СЃС‚СЂР°РЅРёС†Сѓ
 		renderRequest.setAttribute(MANAGER_WITH_EMPLOYEES, manager);
 		renderRequest.setAttribute("employeeIndex", MAIN_MANAGER_COLOR_INDEX);
 		
 		super.doView(renderRequest, renderResponse);
 	}
 	
-	// Возвращает главного менеджера и его подчинённых
+	// Р’РѕР·РІСЂР°С‰Р°РµС‚ РіР»Р°РІРЅРѕРіРѕ РјРµРЅРµРґР¶РµСЂР° Рё РµРіРѕ РїРѕРґС‡РёРЅС‘РЅРЅС‹С…
 	private Manager getMainManager() {
 		Manager manager = null;
 		List<User> users = getEmployes(StringPool.BLANK);
@@ -74,7 +74,7 @@ public class OrganizationChartAction extends MVCPortlet {
 		return manager;
 	}
 	
-	// Получаем менеджера и его подчинённых по экранному имени
+	// РџРѕР»СѓС‡Р°РµРј РјРµРЅРµРґР¶РµСЂР° Рё РµРіРѕ РїРѕРґС‡РёРЅС‘РЅРЅС‹С… РїРѕ СЌРєСЂР°РЅРЅРѕРјСѓ РёРјРµРЅРё
 	private Manager getManagerByScreenName(String screenName) {
 		Manager manager = null;
 		
@@ -84,27 +84,27 @@ public class OrganizationChartAction extends MVCPortlet {
 				manager = new Manager(user);
 				manager.setEmployees(getEmployes(screenName));
 				
-				// Получаем отдел
+				// РџРѕР»СѓС‡Р°РµРј РѕС‚РґРµР»
 				manager.setDepartment(getDepartment(user));
 			}
 		}
 		return manager;
 	}
 		
-	// Возвращает пользователя портала по его экранному имени
+	// Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕСЂС‚Р°Р»Р° РїРѕ РµРіРѕ СЌРєСЂР°РЅРЅРѕРјСѓ РёРјРµРЅРё
 	private User getUser(String screenName) {
 		User user = null;
 		try {
 			user = UserLocalServiceUtil.getUserByScreenName(companyId, screenName);
 		} catch (PortalException e) {
-			_log.error("Ошибка получения пользователя по экранному имени: " + e.getMessage());
+			_log.error("РћС€РёР±РєР° РїРѕР»СѓС‡РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ СЌРєСЂР°РЅРЅРѕРјСѓ РёРјРµРЅРё: " + e.getMessage());
 		} catch (SystemException e) {
-			_log.error("Ошибка получения пользователя по экранному имени: " + e.getMessage());
+			_log.error("РћС€РёР±РєР° РїРѕР»СѓС‡РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ СЌРєСЂР°РЅРЅРѕРјСѓ РёРјРµРЅРё: " + e.getMessage());
 		}
 		return user;
 	}
 	
-	// Возвращает список пользователей для указанного менеджера
+	// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РјРµРЅРµРґР¶РµСЂР°
 	private List<User> getEmployes(String managerScreenName) {
 		List<User> employes = new ArrayList<User>();
 		
@@ -117,31 +117,31 @@ public class OrganizationChartAction extends MVCPortlet {
 		return employes;
 	}
 	
-	// Возвращает менеджера для указанного пользователя портала
+	// Р’РѕР·РІСЂР°С‰Р°РµС‚ РјРµРЅРµРґР¶РµСЂР° РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕСЂС‚Р°Р»Р°
 	private String getManagerSN(User user) {
 		String managerAttr = 
 				(String) user.getExpandoBridge().getAttribute(MANAGER_ATTR);
 		return managerAttr;
 	}
 	
-	// Возвращает отдел, к которому относится пользователь
+	// Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕС‚РґРµР», Рє РєРѕС‚РѕСЂРѕРјСѓ РѕС‚РЅРѕСЃРёС‚СЃСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
 	private Department getDepartment(User user) {
 		Department department = null;
-		// Получаем отдел
+		// РџРѕР»СѓС‡Р°РµРј РѕС‚РґРµР»
 		String departmentName = 
 				(String)user.getExpandoBridge().getAttribute("department");
 		if(departmentName != null) {
 			if(!departmentName.isEmpty()) {
 				
-				// Получаем менеджера
+				// РџРѕР»СѓС‡Р°РµРј РјРµРЅРµРґР¶РµСЂР°
 				String managerSN = getManagerSN(user);
 				Manager manager = getManagerByScreenName(managerSN);
 				
 				if(isMainManager(manager.getManager())) {
-					// У главного руководителя нет отдела
+					// РЈ РіР»Р°РІРЅРѕРіРѕ СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ РЅРµС‚ РѕС‚РґРµР»Р°
 					department = new Department(departmentName, user.getScreenName());
 				} else {
-					// Запоминаем отдел, в котором работает менеджер
+					// Р—Р°РїРѕРјРёРЅР°РµРј РѕС‚РґРµР», РІ РєРѕС‚РѕСЂРѕРј СЂР°Р±РѕС‚Р°РµС‚ РјРµРЅРµРґР¶РµСЂ
 					department = new Department(departmentName, managerSN);
 				}
 			}
@@ -149,10 +149,10 @@ public class OrganizationChartAction extends MVCPortlet {
 		return department;
 	}
 	
-	// Определяет, является ли указанный пользователь главным руководителем
+	// РћРїСЂРµРґРµР»СЏРµС‚, СЏРІР»СЏРµС‚СЃСЏ Р»Рё СѓРєР°Р·Р°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РіР»Р°РІРЅС‹Рј СЂСѓРєРѕРІРѕРґРёС‚РµР»РµРј
 	private boolean isMainManager(User user) {
 		boolean isMainManager = false;
-		// Получаем имя менеджера
+		// РџРѕР»СѓС‡Р°РµРј РёРјСЏ РјРµРЅРµРґР¶РµСЂР°
 		String managerAttr = getManagerSN(user);
 		
 		if(managerAttr == null) {
@@ -165,37 +165,37 @@ public class OrganizationChartAction extends MVCPortlet {
 		return isMainManager;
 	}
 	
-	// Возвращает список всех пользователей портала
+	// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РїРѕСЂС‚Р°Р»Р°
 	public List<User> getUsers() {
 		List<User> users = new ArrayList<User>();
 
 		try {
 			users = UserLocalServiceUtil.getUsers(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 			
-			// Получаем пользователя по умолчанию
+			// РџРѕР»СѓС‡Р°РµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 			User defaultUser = UserLocalServiceUtil.getDefaultUser(companyId);
-			// Удаляем его
+			// РЈРґР°Р»СЏРµРј РµРіРѕ
 			users.remove(defaultUser);
 			
 		} catch (SystemException e) {
-			_log.error("Ошибка получения списка пользователей: " + e.getMessage());
+			_log.error("РћС€РёР±РєР° РїРѕР»СѓС‡РµРЅРёСЏ СЃРїРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№: " + e.getMessage());
 		} catch (PortalException e) {
-			_log.error("Ошибка получения количества пользователей или " +
-					"пользователя по умолчанию:" + e.getMessage());
+			_log.error("РћС€РёР±РєР° РїРѕР»СѓС‡РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РёР»Рё " +
+					"РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ:" + e.getMessage());
 		}
 		
 		return users; 
 	}
 	
-	// Отображает детальную информацию о сотрудниках
+	// РћС‚РѕР±СЂР°Р¶Р°РµС‚ РґРµС‚Р°Р»СЊРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРѕС‚СЂСѓРґРЅРёРєР°С…
 	public void details(ActionRequest actionRequest, ActionResponse actionResponse) 
 			throws IOException, PortletException {
 		
 	    String employeeSN = actionRequest.getParameter("employeeSN");
 	    
-	    // Получаем менеджера
+	    // РџРѕР»СѓС‡Р°РµРј РјРµРЅРµРґР¶РµСЂР°
 	    Manager manager = getManagerByScreenName(employeeSN);
-		// Передаём список менеджеров на страницу
+		// РџРµСЂРµРґР°С‘Рј СЃРїРёСЃРѕРє РјРµРЅРµРґР¶РµСЂРѕРІ РЅР° СЃС‚СЂР°РЅРёС†Сѓ
 	    actionRequest.setAttribute(MANAGER_WITH_EMPLOYEES, manager);
 	    
 		
@@ -207,10 +207,10 @@ public class OrganizationChartAction extends MVCPortlet {
 	public void home(ActionRequest actionRequest, ActionResponse actionResponse)
 		throws IOException, PortletException {
 		
-		// Получаем главного менеджера
+		// РџРѕР»СѓС‡Р°РµРј РіР»Р°РІРЅРѕРіРѕ РјРµРЅРµРґР¶РµСЂР°
 		Manager manager = getMainManager();
 		
-		// Передаём список менеджеров на страницу
+		// РџРµСЂРµРґР°С‘Рј СЃРїРёСЃРѕРє РјРµРЅРµРґР¶РµСЂРѕРІ РЅР° СЃС‚СЂР°РЅРёС†Сѓ
 		actionRequest.setAttribute(MANAGER_WITH_EMPLOYEES, manager);
 		actionRequest.setAttribute("employeeIndex", MAIN_MANAGER_COLOR_INDEX);	
 		

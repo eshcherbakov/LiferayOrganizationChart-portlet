@@ -9,7 +9,7 @@ public class Manager {
 
 	private User manager;
 	
-	// Подчиненённые менеджера
+	// РџРѕРґС‡РёРЅРµРЅС‘РЅРЅС‹Рµ РјРµРЅРµРґР¶РµСЂР°
 	private List<User> employees;
 	private Department department;
 	
