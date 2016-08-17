@@ -1,0 +1,17 @@
+<%@page import="javax.portlet.RenderRequest"%>
+
+<div class="manager employee<%= index %>">
+	<div class="organizatonInfo">
+	</div>	
+	<%
+	if(employee != null) {
+	%>
+	<div class="managerPortrait">
+		<img src="<%=employee.getPortraitURL(themeDisplay) %>" />
+	</div>
+			
+	<div class="managerInfo">
+		<%@ include file="/html/fullInfo.jspf" %>
+	</div>
+	<% } %>
+</div>

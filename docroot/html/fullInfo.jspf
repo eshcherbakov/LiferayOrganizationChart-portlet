@@ -1,0 +1,19 @@
+<div class="info">
+	<div class="header">
+		<span class="managerName"><%=employee.getFullName() %></span><br />
+		<span class="managerJob"><%=employee.getJobTitle() %></span><br />
+	</div>
+	<span class="managerEmail"><%=employee.getEmailAddress() %></span><br />
+	<%
+		List<Phone> phones = employee.getPhones();
+		if(phones != null) {
+			if(phones.size() > 0) {
+				Phone phone = phones.get(0);
+				%>
+					<span class="managerPhone">
+						<%=phone.getNumber()%></span><br />
+				<%
+			}
+		}
+	%>
+</div>

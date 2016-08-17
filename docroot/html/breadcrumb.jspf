@@ -1,0 +1,26 @@
+<%@page import="ru.inrecolan.liferay.organization.model.Department"%>
+
+<div class="breadcrumb">
+	<portlet:actionURL name="home" var="homeURL" />
+	<a class="home" href="<%= homeURL.toString() %>">
+		<div>
+			<img src="<%= renderRequest.getContextPath()%>/img/home.png"></img>
+		</div>
+		<span>AITEK</span>
+	</a>
+	
+	<%
+	Department department = manager.getDepartment();
+	if(department != null) {
+	%>
+		<portlet:actionURL name="details" var="detailsPageURL">
+			<portlet:param name="employeeSN" value="<%= department.getManagerSN() %>" />
+			<portlet:param name="employeeIndex" value="<%= String.valueOf(index) %>" />
+		</portlet:actionURL>	
+		<a class="department" href="<%= detailsPageURL.toString() %>">
+			<div class="employee<%= index %>">
+				<span><%= department.getName() %></span>
+			</div>
+		</a>
+	<% } %>
+</div>

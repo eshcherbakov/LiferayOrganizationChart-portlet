@@ -1,0 +1,3 @@
+<div id="logotip">
+	<img src="<%=themeDisplay.getPathThemeImages()%>/aitek/logotip.png" />
+</div>

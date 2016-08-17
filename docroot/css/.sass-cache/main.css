@@ -1,0 +1,169 @@
+div#organizationChart {
+  color: white; }
+
+div#organizationChart a {
+  color: white;
+  text-decoration: none; }
+
+div#logotip {
+  text-align: center; }
+
+div#logotip img {
+  margin: 5px auto; }
+
+div.manager {
+  height: 250px;
+  position: relative; }
+
+div.organizatonInfo {
+  background: url(../img/manager-back.png);
+  background-repeat: repeat-x;
+  background-position: 0 100%; }
+
+div.organizatonInfo, div.managerInfo {
+  width: 50%;
+  height: 100%; }
+
+div.managerPortrait {
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  top: 0px;
+  width: 100%; }
+
+div.managerPortrait img {
+  border-left: 8px solid white;
+  border-right: 8px solid white;
+  height: 100%; }
+
+div.managerInfo {
+  position: absolute;
+  right: 0px;
+  top: 0px; }
+
+div.managerInfo div.info {
+  font-size: 16px;
+  line-height: 28px;
+  padding: 25px 35px 25px 135px;
+  text-align: right; }
+
+div.worker div.info {
+  font-size: 14px;
+  line-height: 22px;
+  padding: 14px 35px 0px 35px; }
+
+div.managerInfo div.info div.header {
+  margin-bottom: 14px; }
+
+span.managerName {
+  font-size: 20px; }
+
+div#employees {
+  text-align: center;
+  width: 100%; }
+
+div.departmentManager {
+  background: url(../img/manager-back.png);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  border-top: 8px solid white;
+  float: left;
+  height: 302px;
+  width: 25%; }
+
+div.worker {
+  border-top: 8px solid white;
+  height: 126px;
+  margin-right: 80px;
+  opacity: 0.7;
+  position: relative; }
+
+div.worker div.info {
+  float: right; }
+
+div.worker div.space {
+  background: url(../img/manager-back.png);
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  height: 100%;
+  width: 45%; }
+
+div.worker div.portrait {
+  float: right; }
+
+div.worker img {
+  width: 126px; }
+
+div.worker div.portrait {
+  height: 126px;
+  overflow: hidden; }
+
+div.departmentManager img {
+  width: 168px; }
+
+div.departmentManager div.portrait {
+  height: 168px;
+  overflow: hidden;
+  text-align: center; }
+
+div.departmentManager div.portrait {
+  margin-bottom: 20px;
+  padding-top: 18px; }
+
+div.employee0 {
+  background-color: #fbb935; }
+
+div.employee1 {
+  background-color: #9c3591; }
+
+div.employee2 {
+  background-color: #58a356; }
+
+div.employee3 {
+  background-color: #d43939; }
+
+div.employee4 {
+  background-color: #1d7fc0; }
+
+div.employee .info {
+  text-align: right;
+  padding-left: 30px;
+  padding-right: 20px; }
+
+div.employee .info .header {
+  margin-bottom: 10px; }
+
+span.employeeName {
+  font-size: 18px; }
+
+div.portlet-msg-success {
+  display: none; }
+
+div.breadcrumb {
+  height: 38px;
+  line-height: 38px;
+  margin-bottom: 10px; }
+
+div.breadcrumb a {
+  display: block; }
+
+div.breadcrumb span {
+  padding: 0px 15px; }
+
+div.breadcrumb a.home {
+  background-color: #1d7fc0;
+  float: left;
+  height: 100%; }
+
+div.breadcrumb a.home div {
+  float: left; }
+
+div.breadcrumb a.home img {
+  height: 25px;
+  padding: 5px 0px 0px 5px;
+  width: 25px; }
+
+div.breadcrumb a.department {
+  float: left;
+  height: 100%; }
+
